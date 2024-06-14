@@ -24,7 +24,7 @@ class FeedForwardNet(nn.Module):
             nn.ReLU(),
             nn.Linear(256, 10)
         )
-        self.softmax = nn.SoftMax(dim=1)
+        self.softmax = nn.Softmax(dim=1)
 
     def forward(self, input_data):
         flattened_data = self.flatten(input_data)
@@ -56,3 +56,13 @@ if __name__ == "__main__":
 
     # create a data loader for the train set
     train_data_loader = DataLoader(train_data, batch_size=BATCH_SIZE)
+
+    # build model
+    if torch.cuda.is_available():
+        device = "cuda"
+    elif torch.backends.mps.is_available():
+        device="mps"
+    else:
+        device = "cpu"
+    print(f"Using {device} device")
+    feed_forward_net = FeedForwardNet().to(device)
