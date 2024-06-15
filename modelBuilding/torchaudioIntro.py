@@ -18,9 +18,9 @@ Here are the 5 steps to building a NN model with pytorch
 
 BATCH_SIZE = 128
 EPOCHS = 10
-LEARNING_RATE = .001
+LEARNING_RATE = .005
 
-class FeedForwardNet(nn.Module): # Inherits from Module base class
+class FeedForwardNet(nn.Module): # Creates a FeedForwardNet neural network. Inherits from Module base class
 
     def __init__(self):
         super().__init__() # calls constructor parent class
